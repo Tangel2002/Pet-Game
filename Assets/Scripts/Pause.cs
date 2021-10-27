@@ -22,25 +22,26 @@ public class Pause : MonoBehaviour
 
     public void pauseMenu()
     {
-        if (paused)
+        if (!paused)
         {
-            Time.timeScale = 0;
+            
             pauseCanv.gameObject.SetActive(true);
             mainCanv.gameObject.SetActive(false);
-            
+            Time.timeScale = 0;
+
         }
         else
         {
-            pauseCanv.gameObject.SetActive(false);
-            pauseCanv.gameObject.SetActive(true);
             Time.timeScale = 1;
+            pauseCanv.gameObject.SetActive(false);
+            mainCanv.gameObject.SetActive(true);
         }
 
         paused = !paused;
     }
 
 
-    public void quit()
+    public void exit()
     {
         Application.Quit();
     }
