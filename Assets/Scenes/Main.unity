@@ -2223,6 +2223,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shower Head
       objectReference: {fileID: 0}
+    - target: {fileID: 4447279439127612796, guid: fefde64635c662441b855111a7c3261e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fefde64635c662441b855111a7c3261e, type: 3}
 --- !u!1 &1140653887
