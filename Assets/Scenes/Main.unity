@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1282,6 +1282,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 457085595}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &487457562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4447279439127612796, guid: fefde64635c662441b855111a7c3261e, type: 3}
+  m_PrefabInstance: {fileID: 1051289830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &487457564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487457562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfcbfe1d6dc345e4e92bd867073884a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shower: {fileID: 487457562}
 --- !u!1 &630364629
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,7 +2066,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1025843331
 GameObject:
@@ -2318,7 +2336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3857911584409222179, guid: fefde64635c662441b855111a7c3261e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.24
+      value: 2.26
       objectReference: {fileID: 0}
     - target: {fileID: 3857911584409222179, guid: fefde64635c662441b855111a7c3261e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2326,7 +2344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3857911584409222179, guid: fefde64635c662441b855111a7c3261e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.94
+      value: -2.43
       objectReference: {fileID: 0}
     - target: {fileID: 3857911584409222179, guid: fefde64635c662441b855111a7c3261e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2684,7 +2702,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1161667887}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 487457564}
+        m_TargetAssemblyTypeName: Clean, Assembly-CSharp
+        m_MethodName: showerToggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1161667887
 MonoBehaviour:
   m_ObjectHideFlags: 0
