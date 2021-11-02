@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Stats : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class Stats : MonoBehaviour
     public GameObject BoText; //Boredom Text
 
 
+
     void Update()
     {
         countdown -= 1 * Time.deltaTime;
@@ -44,6 +46,20 @@ public class Stats : MonoBehaviour
 
             
         }
+        //Lose Condition Section
+        if (hunger < 0)
+        {
+                SceneManager.LoadScene("Endscreen");
+        }
+        if (hygiene < 0)
+        {
+            SceneManager.LoadScene("Endscreen");
+        }
+        if (boredom > 100)
+        {
+            SceneManager.LoadScene("Endscreen");
+        }
+
 
         if (hungTgl)
         {
@@ -61,6 +77,7 @@ public class Stats : MonoBehaviour
                     hunger = 100;
                     HuText.GetComponent<TextMeshProUGUI>().text = hunger.ToString() + " / 100";
                 }
+                
             }
             
         }
@@ -80,6 +97,10 @@ public class Stats : MonoBehaviour
                     hygiene = 100;
                     HyText.GetComponent<TextMeshProUGUI>().text = hygiene.ToString() + " / 100";
                 }
+                if (hygiene <= 0)
+                {
+                    SceneManager.LoadScene("Endscreen");
+                }
             }
 
         }
@@ -93,11 +114,17 @@ public class Stats : MonoBehaviour
                     boredom -= 2;
                     BoText.GetComponent<TextMeshProUGUI>().text = boredom.ToString() + " / 100";
                     boredCD = 1.5f;
+                    
                 }
                 if (boredom < 0)
                 {
                     boredom = 0;
                     BoText.GetComponent<TextMeshProUGUI>().text = boredom.ToString() + " / 100";
+
+                }
+                if (boredom >= 100)
+                {
+                    SceneManager.LoadScene("Endscreen");
                 }
             }
 
