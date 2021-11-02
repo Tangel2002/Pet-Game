@@ -6,7 +6,11 @@ using TMPro;
 public class Stats : MonoBehaviour
 {
 
-    float countdown = 2;
+    bool tgl = false;
+
+    float countdown = 3f;
+    float statCD = 1.5f;
+    
     public int hunger = 100;
     public int hygiene = 100;
     public int boredom = 0;
@@ -37,23 +41,39 @@ public class Stats : MonoBehaviour
 
             
         }
+        if (tgl)
+        {
+            statCD -= 1 * Time.deltaTime;
+
+        }
+
+        
     }
+
+    public void toggle(string stat)
+    {
+        if (tgl)
+        {
+            tgl = false;
+        }
+        else
+        {
+            tgl = true;
+            addStats(stat);
+        }
+    }
+
 
     public void addStats(string stat)
     {
-        float timer = 1.5f;
-        if (stat == "Hunger")
+        if(statCD <= 0)
         {
-            while (foodBowl.activeInHierarchy)
+            if(stat == "Hunger")
             {
-                timer -= 1 * Time.deltaTime;
-               if(timer <= 0)
-                {
-                    hunger += 5;
-                    HuText.GetComponent<TextMeshProUGUI>().text = hunger.ToString() + " / 100";
-                }
-                timer = 1.5f;
+                hunger += 3;
+                HuText.GetComponent<TextMeshProUGUI>().text = hunger.ToString() + " / 100";
             }
+            statCD = 1.5f;
         }
     }
 }
