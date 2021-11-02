@@ -8,8 +8,9 @@ using UnityEngine.SceneManagement;
 public class Stats : MonoBehaviour
 {
 
-    public Button but;
-    Color bcolor;
+    public Button but; //feed button
+    public Button hygBut;
+    public Button borBut;
 
     public bool hungTgl = false;
     public bool hygTgl = false;
@@ -98,6 +99,10 @@ public class Stats : MonoBehaviour
         }
         if (hygTgl)
         {
+            ColorBlock cb = hygBut.colors;
+            cb.normalColor = Color.gray;
+            cb.selectedColor = Color.gray;
+            hygBut.colors = cb;
             hygCD -= 1 * Time.deltaTime;
             if (hygCD <= 0)
             {
@@ -117,10 +122,20 @@ public class Stats : MonoBehaviour
                     SceneManager.LoadScene("Endscreen");
                 }
             }
-
+        }
+        else
+        {
+            ColorBlock cb = hygBut.colors;
+            cb.normalColor = Color.white;
+            cb.selectedColor = Color.white;
+            hygBut.colors = cb;
         }
         if (boredTgl)
         {
+            ColorBlock cb = borBut.colors;
+            cb.normalColor = Color.gray;
+            cb.selectedColor = Color.gray;
+            borBut.colors = cb;
             boredCD -= 1 * Time.deltaTime;
             if (boredCD <= 0)
             {
@@ -143,6 +158,13 @@ public class Stats : MonoBehaviour
                 }
             }
 
+        }
+        else
+        {
+            ColorBlock cb = borBut.colors;
+            cb.normalColor = Color.white;
+            cb.selectedColor = Color.white;
+            borBut.colors = cb;
         }
 
     }
