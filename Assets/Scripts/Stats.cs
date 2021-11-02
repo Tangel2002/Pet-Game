@@ -6,10 +6,17 @@ using TMPro;
 public class Stats : MonoBehaviour
 {
 
-    bool tgl = false;
+
+    public bool hungTgl = false;
+    public bool hygTgl = false;
+    public bool boredTgl = false;
+
+
+    float hungCD = 1.5f;
+    float hygCD = 1.5f;
+    float boredCD = 1.5f;
 
     float countdown = 3f;
-    float statCD = 1.5f;
     
     public int hunger = 100;
     public int hygiene = 100;
@@ -20,11 +27,7 @@ public class Stats : MonoBehaviour
     public GameObject HyText; //Hygiene Text
     public GameObject BoText; //Boredom Text
 
-    public GameObject ball;
-    public GameObject foodBowl;
-    public GameObject showerHead;
 
-    // Update is called once per frame
     void Update()
     {
         countdown -= 1 * Time.deltaTime;
@@ -41,39 +44,104 @@ public class Stats : MonoBehaviour
 
             
         }
-        if (tgl)
+
+        if (hungTgl)
         {
-            statCD -= 1 * Time.deltaTime;
+            hungCD -= 1 * Time.deltaTime;
+            if(hungCD <= 0)
+            {
+                if(hunger <= 100)
+                {
+                    hunger += 2;
+                    HuText.GetComponent<TextMeshProUGUI>().text = hunger.ToString() + " / 100";
+                    hungCD = 1.5f;
+                }
+                if(hunger > 100)
+                {
+                    hunger = 100;
+                    HuText.GetComponent<TextMeshProUGUI>().text = hunger.ToString() + " / 100";
+                }
+            }
+            
+        }
+        if (hygTgl)
+        {
+            hygCD -= 1 * Time.deltaTime;
+            if (hygCD <= 0)
+            {
+                if (hygiene <= 100)
+                {
+                    hygiene += 2;
+                    HyText.GetComponent<TextMeshProUGUI>().text = hygiene.ToString() + " / 100";
+                    hygCD = 1.5f;
+                }
+                if (hygiene > 100)
+                {
+                    hygiene = 100;
+                    HyText.GetComponent<TextMeshProUGUI>().text = hygiene.ToString() + " / 100";
+                }
+            }
+
+        }
+        if (boredTgl)
+        {
+            boredCD -= 1 * Time.deltaTime;
+            if (boredCD <= 0)
+            {
+                if (boredom >= 0)
+                {
+                    boredom -= 2;
+                    BoText.GetComponent<TextMeshProUGUI>().text = boredom.ToString() + " / 100";
+                    boredCD = 1.5f;
+                }
+                if (boredom < 0)
+                {
+                    boredom = 0;
+                    BoText.GetComponent<TextMeshProUGUI>().text = boredom.ToString() + " / 100";
+                }
+            }
 
         }
 
-        
     }
 
-    public void toggle(string stat)
+
+    public void hungerToggle()
     {
-        if (tgl)
+        if (hungTgl)
         {
-            tgl = false;
+            hungTgl = false;
         }
         else
         {
-            tgl = true;
-            addStats(stat);
+            hungTgl = true;
         }
+        
     }
 
-
-    public void addStats(string stat)
+    public void hygieneToggle()
     {
-        if(statCD <= 0)
+        if (hygTgl)
         {
-            if(stat == "Hunger")
-            {
-                hunger += 3;
-                HuText.GetComponent<TextMeshProUGUI>().text = hunger.ToString() + " / 100";
-            }
-            statCD = 1.5f;
+            hygTgl = false;
         }
+        else
+        {
+            hygTgl = true;
+        }
+
+    }
+
+    public void bordeomToggle()
+    {
+        if (boredTgl)
+        {
+            boredTgl = false;
+        }
+        else
+        {
+            boredTgl = true;
+        }
+
     }
 }
