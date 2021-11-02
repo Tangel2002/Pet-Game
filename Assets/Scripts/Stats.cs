@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
 public class Stats : MonoBehaviour
 {
 
+    public Button but;
+    Color bcolor;
 
     public bool hungTgl = false;
     public bool hygTgl = false;
     public bool boredTgl = false;
 
 
-    float hungCD = 1.5f;
-    float hygCD = 1.5f;
-    float boredCD = 1.5f;
+    float hungCD = 1.2f;
+    float hygCD = 1.2f;
+    float boredCD = 1.2f;
 
     float countdown = 3f;
     
@@ -63,12 +66,17 @@ public class Stats : MonoBehaviour
 
         if (hungTgl)
         {
+            ColorBlock cb = but.colors;
+            cb.normalColor = Color.gray;
+            cb.selectedColor = Color.gray;
+            but.colors = cb;
+
             hungCD -= 1 * Time.deltaTime;
             if(hungCD <= 0)
             {
                 if(hunger <= 100)
                 {
-                    hunger += 2;
+                    hunger += 5;
                     HuText.GetComponent<TextMeshProUGUI>().text = hunger.ToString() + " / 100";
                     hungCD = 1.5f;
                 }
@@ -77,9 +85,20 @@ public class Stats : MonoBehaviour
                     hunger = 100;
                     HuText.GetComponent<TextMeshProUGUI>().text = hunger.ToString() + " / 100";
                 }
+<<<<<<< Updated upstream
                 
             }
             
+=======
+            } 
+        }
+        else
+        {
+            ColorBlock cb = but.colors;
+            cb.normalColor = Color.white;
+            cb.selectedColor = Color.white;
+            but.colors = cb;
+>>>>>>> Stashed changes
         }
         if (hygTgl)
         {
@@ -111,7 +130,7 @@ public class Stats : MonoBehaviour
             {
                 if (boredom >= 0)
                 {
-                    boredom -= 2;
+                    boredom -= 4;
                     BoText.GetComponent<TextMeshProUGUI>().text = boredom.ToString() + " / 100";
                     boredCD = 1.5f;
                     
