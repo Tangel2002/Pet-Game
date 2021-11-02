@@ -85,12 +85,9 @@ public class Stats : MonoBehaviour
                     hunger = 100;
                     HuText.GetComponent<TextMeshProUGUI>().text = hunger.ToString() + " / 100";
                 }
-<<<<<<< Updated upstream
                 
             }
             
-=======
-            } 
         }
         else
         {
@@ -98,7 +95,6 @@ public class Stats : MonoBehaviour
             cb.normalColor = Color.white;
             cb.selectedColor = Color.white;
             but.colors = cb;
->>>>>>> Stashed changes
         }
         if (hygTgl)
         {
